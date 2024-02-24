@@ -46,5 +46,5 @@ Route::post('/posts/{post}/unlikes', [PostUnlikeController::class, 'store'])->na
 
 //create a route for deleting a post
 Route::delete('/posts/{post}', [PostController::class, 'destroy'])->name('posts.destroy');
-Route::get('/users/{user:name}/posts', [UserPostController::class, 'index'])->name('users.posts');
+Route::get('/users/{user}/posts', [UserPostController::class, 'index'])->name('users.posts');
     
