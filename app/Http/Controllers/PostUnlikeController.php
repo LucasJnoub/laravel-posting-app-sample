@@ -7,6 +7,9 @@ use Illuminate\Http\Request;
 
 class PostUnlikeController extends Controller
 {
+    public function __construct(){
+        $this->middleware(['auth']);
+    }
     public function store(Post $post, Request $request){
     
         // Check if the user has already unliked the post, and if so, do nothing

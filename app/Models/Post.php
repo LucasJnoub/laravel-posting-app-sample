@@ -31,4 +31,6 @@ class Post extends Model
     public function unlikedBy(User $user){
         return $this->unlikes->contains('user_id', $user->id);
     }
+
+
 }

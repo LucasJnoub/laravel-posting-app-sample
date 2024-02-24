@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 class PostController extends Controller
 {
     public function index(){
-        $posts = Post::latest()->paginate(2);
+        $posts = Post::with('user', 'likes')->latest()->paginate(2);
         return view('posts.index',['posts'=>$posts]);
     }
 
@@ -30,4 +30,9 @@ class PostController extends Controller
         return redirect()->route('posts');
     }
     
+    public function destroy(Post $post){
+        $this->authorize('delete', $post);
+        $post->delete();
+        return back();
+    }
 }
